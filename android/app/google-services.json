@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "234942646771",
+    "project_id": "my-portfolio-app-web",
+    "storage_bucket": "my-portfolio-app-web.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:234942646771:android:b498c2b1874e2ea5e0aa86",
+        "android_client_info": {
+          "package_name": "com.tharunchowdary.portfolio"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbJFCELj5w7PT0IjBOweIcAZy8sQOnr5c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
