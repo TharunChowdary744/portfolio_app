@@ -2,8 +2,8 @@ import '../features/experiences/domain/entities/experience.dart';
 
 final mockedExperiences = [
   Experience(
-    id: 4,
-    title: "Lead Flutter / Google Cloud Platform Junior",
+    id: '4',
+    title: "Flutter Developer"/* / Google Cloud Platform Junior*/,
     description: """
 Responsable de la migration du Système d'Information existant vers le Cloud (Google Cloud Platform).
 - Conteneurisation de l'existant
@@ -18,16 +18,16 @@ Responsable de la migration du Système d'Information existant vers le Cloud (Go
 En tant que Lead Tech Flutter je suis en charge de l'équipe de développement et des relations entre le métier et la technique.
 
 Enfin j'ai pu mettre en place une plateforme de CI/CD Self Hosted avec Gitlab pour permettre le déploiement dans le Cloud mais aussi sur AppStore et Google Play Store.""",
-    startYear: "2023",
-    endYear: "2024",
-    city: "Nantes",
-    country: "France",
-    company: "Windle",
-    salary: "45k€",
+    startYear: "2022",
+    endYear: "Present",
+    city: "Hyderabad",
+    country: "India",
+    company: "Dizitive It solutions",
+    salary: "15k ₹",
     time: "7 m - current",
     workType: "Hybrid",
   ),
-  Experience(
+/*  Experience(
     id: 3,
     title: "Developpeur (Symfony, Flutter) & Chef de Projet Junior",
     description:
@@ -41,8 +41,8 @@ En tant que chef de projet (SCRUM) j'élabore des Users Stories, planifie les Sp
     salary: "40k€",
     time: "1 y 1 m",
     workType: "Hybrid",
-  ),
-  Experience(
+  ),*/
+/*  Experience(
     id: 2,
     title: "Developpeur Flutter / API Symfony",
     description:
@@ -87,5 +87,5 @@ Développement de l'API REST en Symfony avec API Platform.""",
     salary: "20k€",
     time: "2 m",
     workType: "On site",
-  ),
+  ),*/
 ];

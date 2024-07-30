@@ -1,27 +1,32 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:google_fonts/google_fonts.dart';
-import '../src/constants/dark_theme.dart';
-import '../src/constants/light_theme.dart';
-import '../src/routing/app_router.dart';
 
-class MyApp extends ConsumerWidget {
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../HomePgae.dart';
+import 'constants/dark_theme.dart';
+import 'constants/light_theme.dart';
+
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    precacheImage(
+  Widget build(BuildContext context) {
+   /* precacheImage(
         Image.asset(
           "assets/images/baptiste_debout.png",
           fit: BoxFit.fitHeight,
         ).image,
-        context);
-    final goRouter = ref.watch(goRouterProvider);
-    return MaterialApp.router(
-      routerConfig: goRouter,
+        context);*/
+    return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: lightTheme(context),
       darkTheme: darkTheme(context),
-      debugShowCheckedModeBanner: false,
+      themeMode: ThemeMode.system,
+      home: Scaffold(
+
+        // backgroundColor: TcColors.white,
+        body: MyHomePage(),
+      ),
     );
   }
 }

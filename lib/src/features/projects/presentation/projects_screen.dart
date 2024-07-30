@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
-
+import 'package:get/get.dart';
+import 'package:portfolio/src/features/projects/presentation/project_screen.dart';
 import '../../../mock/project_mock.dart';
 import '../../../routing/app_router.dart';
 
@@ -111,8 +112,7 @@ class ProjectsScreen extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return GestureDetector(
                     onTap: () {
-                      context.push(
-                          "${AppRoute.projects.route}/${mockedProjects[index].id}");
+                      Get.to(ProjectScreen( projectId: mockedProjects[index].id,));
                     },
                     child: Container(
                       margin: (index == items.length - 1)

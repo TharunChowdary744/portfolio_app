@@ -51,12 +51,12 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
       apiKey: "AIzaSyCaqzzmXYrVSSZoOg0p0EH1EsL17oF1l2Q",
-      authDomain: "my-portfolio-app-web.firebaseapp.com",
-      projectId: "my-portfolio-app-web",
-      storageBucket: "my-portfolio-app-web.appspot.com",
-      messagingSenderId: "234942646771",
-      appId: "1:234942646771:web:6a3d687e8ef2c61ce0aa86",
-      measurementId: "G-55R288XXC1"
+      authDomain: "my-portfolio-app-web.firebaseapp.com",//
+      projectId: "my-portfolio-app-web",//
+      storageBucket: "my-portfolio-app-web.appspot.com",//
+      messagingSenderId: "234942646771",//
+      appId: "1:234942646771:android:b498c2b1874e2ea5e0aa86",//
+      // measurementId: "G-55R288XXC1"
   );
 
   /*static const FirebaseOptions ios = FirebaseOptions(

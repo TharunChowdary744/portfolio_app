@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../routing/app_router.dart';
+import 'package:get/get.dart';
 import '../../domain/entities/experience.dart';
+import '../experience_screen.dart';
 
 class ExperienceCard extends StatelessWidget {
   final Experience experience;
@@ -14,9 +16,7 @@ class ExperienceCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.pushNamed(AppRoute.experienceId.name, pathParameters: {
-          "experienceId": "${experience.id}",
-        });
+        Get.to(ExperienceScreen(experience: experience,));
       },
       child: Container(
           decoration: BoxDecoration(

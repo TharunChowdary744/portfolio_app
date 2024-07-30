@@ -67,7 +67,7 @@ GoRouter goRouter(ProviderRef<GoRouter> ref) {
                 pageBuilder: (context, state) =>
                     const NoTransitionPage(child: ExperiencesScreen()),
                 routes: [
-                  GoRoute(
+            /*      GoRoute(
                       path: AppRoute.experienceId.route,
                       name: AppRoute.experienceId.name,
                       builder: (context, state) {
@@ -78,9 +78,9 @@ GoRouter goRouter(ProviderRef<GoRouter> ref) {
                           return const NotFoundScreen();
                         }
                         return ExperienceScreen(
-                          experienceId: int.parse(experienceId),
+                          experienceId: experienceId,
                         );
-                      }),
+                      }),*/
                 ],
               ),
             ],

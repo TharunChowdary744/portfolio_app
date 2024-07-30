@@ -1,14 +1,13 @@
 import 'dart:ui';
 
-import 'package:flutter/cupertino.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import '../../../features/experiences/presentation/widget/experience_card.dart';
+import 'package:get/get.dart';
+import 'package:portfolio/src/features/experiences/presentation/widget/experience_card.dart';
 import 'package:text_scroll/text_scroll.dart';
 
-import '../../../mock/experience_mock.dart';
-
+import '../domain/entities/experience.dart';
 class ExperiencesScreen extends StatefulWidget {
   const ExperiencesScreen({super.key});
 
@@ -18,10 +17,13 @@ class ExperiencesScreen extends StatefulWidget {
 
 class _ExperiencesScreenState extends State<ExperiencesScreen> {
   final scrollController = ScrollController();
+  List<Experience> _experiences = [];
+  bool _isLoading = true;
 
   @override
   void initState() {
     super.initState();
+    fetchExperience();
   }
 
   @override
@@ -29,6 +31,56 @@ class _ExperiencesScreenState extends State<ExperiencesScreen> {
     scrollController.dispose();
     super.dispose();
   }
+  Future<Map<String, dynamic>?> getExperienceByProfileId(String profileId) async {
+    try {
+      CollectionReference experiences = FirebaseFirestore.instance.collection('experiences');
+      QuerySnapshot querySnapshot = await experiences.where('profileId', isEqualTo: profileId).get();
+
+      if (querySnapshot.docs.isNotEmpty) {
+        List<Experience> experiences = querySnapshot.docs.map((doc) {
+          final data = doc.data() as Map<String, dynamic>;
+          return Experience(
+            id: data['experienceId'], // Assuming you want to use the document ID as the ID
+            title: data['title'],
+            description: data['description'],
+            startYear: data['startYear'],
+            endYear: data['endYear'],
+            city: data['city'],
+            country: data['country'],
+            company: data['company'],
+            salary: data['salary'],
+            time: data['time'],
+            workType: data['workType'],
+          );
+        }).toList();
+
+        setState(() {
+          _experiences = experiences;
+          _isLoading = false;
+        });
+      } else {
+        setState(() {
+          _experiences = [];
+          _isLoading = false;
+        });
+      }
+    } catch (e) {
+      print('Error fetching data: $e');
+      return null;
+    }
+  }
+  void fetchExperience() async {
+    String profileId = 'UQiyhgjnAYTtZw94iime';
+    Map<String, dynamic>? experienceData = await getExperienceByProfileId(profileId);
+
+    if (experienceData != null) {
+      print('Experience Data: $experienceData');
+    } else {
+      print('No experience data found for profileId: $profileId');
+    }
+  }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -93,7 +145,7 @@ class _ExperiencesScreenState extends State<ExperiencesScreen> {
               Flexible(flex: 7, child: ClipRRect(child: BlurShadow())),
             ],
           ),
-          CustomScrollView(
+          /*CustomScrollView(
             controller: scrollController,
             slivers: [
               SliverAppBar(
@@ -143,6 +195,57 @@ class _ExperiencesScreenState extends State<ExperiencesScreen> {
                               ),
                             ));
                           }
+                        });
+                        return list;
+                      }).toList(),
+                    ),
+                  )
+                ]),
+              ),
+            ],
+          ),*/
+          CustomScrollView(
+            controller: scrollController,
+            slivers: [
+              SliverAppBar(
+                backgroundColor: Colors.transparent,
+                shadowColor: Colors.transparent,
+                surfaceTintColor: Colors.transparent,
+                elevation: 0,
+                primary: true,
+                toolbarHeight: 40,
+                floating: true,
+                snap: true,
+              ),
+              const SliverSpace(300),
+              SliverList(
+                delegate: SliverChildListDelegate([
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20, right: 20, bottom: 120),
+                    child: _isLoading
+                        ? Center(child: CircularProgressIndicator())
+                        : _experiences.isEmpty
+                        ? Center(child: Text('No experiences found'))
+                        : StaggeredGrid.count(
+                      crossAxisCount: 4,
+                      mainAxisSpacing: 20,
+                      crossAxisSpacing: 20,
+                      children: [
+                        StaggeredGridTile.count(
+                          crossAxisCellCount: 2,
+                          mainAxisCellCount: 1,
+                          child: SizedBox(),
+                        ),
+                      ].expand((element) {
+                        List<StaggeredGridTile> list = [];
+                        _experiences.asMap().forEach((index, experience) {
+                          list.add(StaggeredGridTile.count(
+                            crossAxisCellCount: 2,
+                            mainAxisCellCount: 2.5,
+                            child: ExperienceCard(
+                              experience: experience,
+                            ),
+                          ));
                         });
                         return list;
                       }).toList(),
@@ -209,15 +312,15 @@ class _Background extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: const [
                       TextScrolled(
-                        "   BAPTISTE    LECAT",
+                        "   ANNE    THARUN   VENKATA    SAI",
                         textDirection: TextDirection.ltr,
                       ),
                       TextScrolled(
-                        "   DEVELOPPEUR    ARCHITECTE",
+                        "   FONTEND    DEVELOPER",
                         textDirection: TextDirection.rtl,
                       ),
                       TextScrolled(
-                        "   FLUTTER    GOOGLE CLOUD",
+                        "   REACTJS    FLUTTER    ",
                         textDirection: TextDirection.ltr,
                       ),
                     ],

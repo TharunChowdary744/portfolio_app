@@ -3,17 +3,17 @@ import '../../../mock/experience_mock.dart';
 import '../domain/entities/experience.dart';
 
 class ExperienceScreen extends StatelessWidget {
-  final int experienceId;
+  final Experience experience;
   const ExperienceScreen({
     super.key,
-    required this.experienceId,
+    required this.experience,
   });
 
   @override
   Widget build(BuildContext context) {
-    final Experience experience = mockedExperiences.firstWhere(
+   /* final Experience experience = mockedExperiences.firstWhere(
       (element) => element.id == experienceId,
-    );
+    );*/
     return Scaffold(
       body: CustomScrollView(
         physics: const ClampingScrollPhysics(),
