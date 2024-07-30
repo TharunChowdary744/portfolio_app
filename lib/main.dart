@@ -15,7 +15,7 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-/*  FirebaseAnalytics analytics = FirebaseAnalytics.instance;
+  FirebaseAnalytics analytics = FirebaseAnalytics.instance;
   usePathUrlStrategy();
 
   FlutterError.onError = (errorDetails) {
@@ -24,7 +24,7 @@ Future<void> main() async {
   PlatformDispatcher.instance.onError = (error, stack) {
     FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
     return true;
-  };*/
+  };
 
   runApp(const MyApp());
 }

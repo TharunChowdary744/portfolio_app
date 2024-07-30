@@ -6,7 +6,7 @@ import '../../../mock/project_mock.dart';
 import '../domain/entities/project.dart';
 
 class ProjectScreen extends StatefulWidget {
-  final int projectId;
+  final String projectId;
   const ProjectScreen({
     super.key,
     required this.projectId,

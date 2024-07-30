@@ -2,6 +2,7 @@ import 'dart:ui';
 import '../features/projects/domain/entities/project.dart';
 import '../features/projects/domain/entities/project_category.dart';
 import '../features/projects/domain/entities/project_feature.dart';
+import '../features/settings/domain/profile.dart';
 
 final mockedProjectCategories = [
   ProjectCategory(id: 1, name: "Mobile"),
@@ -13,7 +14,7 @@ final mockedProjectCategories = [
 
 final mockedProjects = [
   Project(
-      id: 1,
+      id: '1',
       name: "Windle",
       description:
           "Application mobile destiné au monde du chauffage. Windle est un assistant de dimensionnement, qui propose une interface simple et intuitive pour aider les professionnels du chauffage à choisir les pompes à chaleurs les plus adaptés aux besoins.",
@@ -23,11 +24,11 @@ final mockedProjects = [
         mockedProjectCategories.firstWhere((element) => element.id == 1),
       ],
       features: [
-        ProjectFeature(
+        ProjectFeatures(
             id: 1, name: "Authentification Google/Apple", icon: "flutter"),
-        ProjectFeature(
+        ProjectFeatures(
             id: 2, name: "Calcul poussé et estimation de conso", icon: "dart"),
-        ProjectFeature(
+        ProjectFeatures(
             id: 3,
             name: "Recherche complexe parmis 200000 PAC",
             icon: "firebase"),
@@ -42,7 +43,7 @@ final mockedProjects = [
         "assets/projects/images/windle_5.png",
       ]),
   Project(
-    id: 2,
+    id: '2',
     name: "Weather Journey",
     description:
         "Application météo boostée à l'IA. Elle permet de consulter la météo grâce à de la génération d'image basé sur les données météorologiques du lieu défini. Vous pouvez ainsi voir le temps qu'il fait en un clin d'oeil.",
@@ -52,11 +53,11 @@ final mockedProjects = [
       mockedProjectCategories.firstWhere((element) => element.id == 1),
     ],
     features: [
-      ProjectFeature(
+      ProjectFeatures(
           id: 1, name: "Prompt Ingeneering (ChatGPT)", icon: "flutter"),
-      ProjectFeature(
+      ProjectFeatures(
           id: 2, name: "Génération d'image (MidJourney)", icon: "dart"),
-      ProjectFeature(
+      ProjectFeatures(
           id: 3, name: "Système temps réel (Queuing)", icon: "firebase"),
     ],
     githubUrl: "https://test.com",
@@ -66,7 +67,7 @@ final mockedProjects = [
     ],
   ),
   Project(
-    id: 3,
+    id: '3',
     name: "Vsion Habits Tracker",
     description:
         "Application mobile de suivi d'habitudes. Vsion est un tracker d'habitudes qui permet de suivre vos habitudes quotidiennes et de les visualiser pour vous aider à les maintenir.",
@@ -76,9 +77,9 @@ final mockedProjects = [
       mockedProjectCategories.firstWhere((element) => element.id == 1),
     ],
     features: [
-      ProjectFeature(
+      ProjectFeatures(
           id: 1, name: "Algorythme de recommandation", icon: "flutter"),
-      ProjectFeature(
+      ProjectFeatures(
           id: 2, name: "Infrastructure totalement Serverless", icon: "dart"),
     ],
     githubUrl: "https://test.com",
@@ -88,7 +89,7 @@ final mockedProjects = [
     ],
   ),
   Project(
-    id: 4,
+    id: '4',
     name: "ShopHouse",
     description:
         "Application mobile permettant de gérer sa liste de courses et de les partager avec ses proches. Chaque membre du foyer peut ajouter des produits à la liste de courses mais aussi voter pour les repas de la semaine.",
@@ -98,8 +99,8 @@ final mockedProjects = [
       mockedProjectCategories.firstWhere((element) => element.id == 1),
     ],
     features: [
-      ProjectFeature(id: 1, name: "Interface UI/UX", icon: "flutter"),
-      ProjectFeature(
+      ProjectFeatures(id: 1, name: "Interface UI/UX", icon: "flutter"),
+      ProjectFeatures(
           id: 2, name: "Application mobile cross-platform", icon: "dart"),
     ],
     githubUrl: "https://test.com",

@@ -4,6 +4,7 @@ import '../domain/entities/experience.dart';
 
 class ExperienceScreen extends StatelessWidget {
   final Experience experience;
+
   const ExperienceScreen({
     super.key,
     required this.experience,
@@ -11,7 +12,7 @@ class ExperienceScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-   /* final Experience experience = mockedExperiences.firstWhere(
+    /* final Experience experience = mockedExperiences.firstWhere(
       (element) => element.id == experienceId,
     );*/
     return Scaffold(
@@ -30,9 +31,7 @@ class ExperienceScreen extends StatelessWidget {
                 child: Center(
                   child: SizedBox(
                     height: 140,
-                    child: ClipRRect(
-                        borderRadius: BorderRadius.circular(20),
-                        child: Image.asset("assets/images/windle.jpg")),
+                    child: ClipRRect(borderRadius: BorderRadius.circular(20), child: Image.asset("assets/images/windle.jpg")),
                   ),
                 ),
               ),
@@ -48,8 +47,7 @@ class ExperienceScreen extends StatelessWidget {
                   ),
                   color: Color(0xFF232323)),
               child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
                 child: Column(
                   children: [
                     Row(
@@ -81,33 +79,17 @@ class ExperienceScreen extends StatelessWidget {
                             flexibleSpace: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
-                                    "${experience.company} - ${experience.city}, ${experience.country}",
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .bodyMedium!
-                                        .copyWith(
-                                          color:
-                                              (Theme.of(context).brightness ==
-                                                      Brightness.light)
-                                                  ? Theme.of(context)
-                                                      .scaffoldBackgroundColor
-                                                      .withOpacity(0.7)
-                                                  : Theme.of(context)
-                                                      .dividerColor
-                                                      .withOpacity(0.7),
+                                Text("${experience.company} - ${experience.city}, ${experience.country}",
+                                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                                          color: (Theme.of(context).brightness == Brightness.light)
+                                              ? Theme.of(context).scaffoldBackgroundColor.withOpacity(0.7)
+                                              : Theme.of(context).dividerColor.withOpacity(0.7),
                                           fontWeight: FontWeight.bold,
                                         )),
                                 Text(experience.title,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .titleLarge!
-                                        .copyWith(
-                                          color: (Theme.of(context)
-                                                      .brightness ==
-                                                  Brightness.light)
-                                              ? Theme.of(context)
-                                                  .scaffoldBackgroundColor
+                                    style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                                          color: (Theme.of(context).brightness == Brightness.light)
+                                              ? Theme.of(context).scaffoldBackgroundColor
                                               : Theme.of(context).dividerColor,
                                           fontWeight: FontWeight.bold,
                                         )),
@@ -119,36 +101,27 @@ class ExperienceScreen extends StatelessWidget {
                               [
                                 const SizedBox(height: 20),
                                 Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
+                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                   children: [
+                                    if (experience.salary != null)
+                                      Row(
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+                                          Image.asset(
+                                            "assets/icons/png/salary.png",
+                                            height: 32,
+                                          ),
+                                          const SizedBox(width: 10),
+                                          Text("${experience.salary}",
+                                              style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                                                    color: (Theme.of(context).brightness == Brightness.light)
+                                                        ? Theme.of(context).scaffoldBackgroundColor
+                                                        : Theme.of(context).dividerColor,
+                                                  )),
+                                        ],
+                                      ),
                                     Row(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        Image.asset(
-                                          "assets/icons/png/salary.png",
-                                          height: 32,
-                                        ),
-                                        const SizedBox(width: 10),
-                                        Text("${experience.salary}",
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .titleSmall!
-                                                .copyWith(
-                                                  color: (Theme.of(context)
-                                                              .brightness ==
-                                                          Brightness.light)
-                                                      ? Theme.of(context)
-                                                          .scaffoldBackgroundColor
-                                                      : Theme.of(context)
-                                                          .dividerColor,
-                                                )),
-                                      ],
-                                    ),
-                                    Row(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
                                       children: [
                                         Image.asset(
                                           "assets/icons/png/duration.png",
@@ -156,23 +129,15 @@ class ExperienceScreen extends StatelessWidget {
                                         ),
                                         const SizedBox(width: 10),
                                         Text(experience.time,
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .titleSmall!
-                                                .copyWith(
-                                                  color: (Theme.of(context)
-                                                              .brightness ==
-                                                          Brightness.light)
-                                                      ? Theme.of(context)
-                                                          .scaffoldBackgroundColor
-                                                      : Theme.of(context)
-                                                          .dividerColor,
+                                            style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                                                  color: (Theme.of(context).brightness == Brightness.light)
+                                                      ? Theme.of(context).scaffoldBackgroundColor
+                                                      : Theme.of(context).dividerColor,
                                                 )),
                                       ],
                                     ),
                                     Row(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
                                       children: [
                                         Image.asset(
                                           "assets/icons/png/workplace.png",
@@ -180,17 +145,10 @@ class ExperienceScreen extends StatelessWidget {
                                         ),
                                         const SizedBox(width: 10),
                                         Text(experience.workType,
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .titleSmall!
-                                                .copyWith(
-                                                  color: (Theme.of(context)
-                                                              .brightness ==
-                                                          Brightness.light)
-                                                      ? Theme.of(context)
-                                                          .scaffoldBackgroundColor
-                                                      : Theme.of(context)
-                                                          .dividerColor,
+                                            style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                                                  color: (Theme.of(context).brightness == Brightness.light)
+                                                      ? Theme.of(context).scaffoldBackgroundColor
+                                                      : Theme.of(context).dividerColor,
                                                 )),
                                       ],
                                     ),
@@ -201,34 +159,20 @@ class ExperienceScreen extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text("Key Information",
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .titleMedium!
-                                            .copyWith(
+                                        style: Theme.of(context).textTheme.titleMedium!.copyWith(
                                               fontSize: 20,
-                                              color: (Theme.of(context)
-                                                          .brightness ==
-                                                      Brightness.light)
-                                                  ? Theme.of(context)
-                                                      .scaffoldBackgroundColor
-                                                  : Theme.of(context)
-                                                      .dividerColor,
+                                              color: (Theme.of(context).brightness == Brightness.light)
+                                                  ? Theme.of(context).scaffoldBackgroundColor
+                                                  : Theme.of(context).dividerColor,
                                             )),
                                     const SizedBox(height: 4),
                                     Text(
                                       experience.description,
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodySmall!
-                                          .copyWith(
+                                      style: Theme.of(context).textTheme.bodySmall!.copyWith(
                                             fontSize: 14,
-                                            color:
-                                                (Theme.of(context).brightness ==
-                                                        Brightness.light)
-                                                    ? Theme.of(context)
-                                                        .scaffoldBackgroundColor
-                                                    : Theme.of(context)
-                                                        .dividerColor,
+                                            color: (Theme.of(context).brightness == Brightness.light)
+                                                ? Theme.of(context).scaffoldBackgroundColor
+                                                : Theme.of(context).dividerColor,
                                           ),
                                     ),
                                   ],
@@ -238,91 +182,55 @@ class ExperienceScreen extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text("Technologies",
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .titleMedium!
-                                            .copyWith(
+                                        style: Theme.of(context).textTheme.titleMedium!.copyWith(
                                               fontSize: 20,
-                                              color: (Theme.of(context)
-                                                          .brightness ==
-                                                      Brightness.light)
-                                                  ? Theme.of(context)
-                                                      .scaffoldBackgroundColor
-                                                  : Theme.of(context)
-                                                      .dividerColor,
+                                              color: (Theme.of(context).brightness == Brightness.light)
+                                                  ? Theme.of(context).scaffoldBackgroundColor
+                                                  : Theme.of(context).dividerColor,
                                             )),
                                     const SizedBox(height: 4),
                                     SizedBox(
                                       height: 58,
                                       child: ListView.builder(
                                         scrollDirection: Axis.horizontal,
-                                        itemCount: 5,
+                                        itemCount: experience.technologies.length,
                                         itemBuilder: (context, index) {
                                           return Container(
-                                            margin: const EdgeInsets.only(
-                                                right: 20),
+                                            margin: const EdgeInsets.only(right: 20),
                                             child: Row(
                                               children: [
                                                 Container(
                                                     width: 58,
                                                     decoration: BoxDecoration(
                                                       color: Colors.white,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              12),
+                                                      borderRadius: BorderRadius.circular(12),
                                                     ),
                                                     child: Padding(
-                                                      padding:
-                                                          const EdgeInsets.all(
-                                                              12),
+                                                      padding: const EdgeInsets.all(12),
                                                       child: Image.asset(
                                                         "assets/icons/tech/flutter.png",
                                                       ),
                                                     )),
                                                 const SizedBox(width: 10),
                                                 Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
+                                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                                  mainAxisAlignment: MainAxisAlignment.center,
                                                   children: [
                                                     Text(
-                                                      "Flutter",
-                                                      style:
-                                                          Theme.of(context)
-                                                              .textTheme
-                                                              .titleSmall!
-                                                              .copyWith(
-                                                                color: (Theme.of(context)
-                                                                            .brightness ==
-                                                                        Brightness
-                                                                            .light)
-                                                                    ? Theme.of(
-                                                                            context)
-                                                                        .scaffoldBackgroundColor
-                                                                    : Theme.of(
-                                                                            context)
-                                                                        .dividerColor,
-                                                              ),
+                                                      "${experience.technologies[index]['title']}",
+                                                      style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                                                            color: (Theme.of(context).brightness == Brightness.light)
+                                                                ? Theme.of(context).scaffoldBackgroundColor
+                                                                : Theme.of(context).dividerColor,
+                                                          ),
                                                     ),
                                                     Text(
-                                                      "Mobile development",
-                                                      style:
-                                                          Theme.of(context)
-                                                              .textTheme
-                                                              .bodySmall!
-                                                              .copyWith(
-                                                                color: (Theme.of(context)
-                                                                            .brightness ==
-                                                                        Brightness
-                                                                            .light)
-                                                                    ? Theme.of(
-                                                                            context)
-                                                                        .scaffoldBackgroundColor
-                                                                    : Theme.of(
-                                                                            context)
-                                                                        .dividerColor,
-                                                              ),
+                                                      "${experience.technologies[index]['subTitle']}",
+                                                      style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                                                            color: (Theme.of(context).brightness == Brightness.light)
+                                                                ? Theme.of(context).scaffoldBackgroundColor
+                                                                : Theme.of(context).dividerColor,
+                                                          ),
                                                     ),
                                                   ],
                                                 )

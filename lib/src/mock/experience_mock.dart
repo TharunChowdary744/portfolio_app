@@ -3,7 +3,7 @@ import '../features/experiences/domain/entities/experience.dart';
 final mockedExperiences = [
   Experience(
     id: '4',
-    title: "Flutter Developer"/* / Google Cloud Platform Junior*/,
+    title: "Flutter Developer" /* / Google Cloud Platform Junior*/,
     description: """
 Responsable de la migration du Système d'Information existant vers le Cloud (Google Cloud Platform).
 - Conteneurisation de l'existant
@@ -26,6 +26,7 @@ Enfin j'ai pu mettre en place une plateforme de CI/CD Self Hosted avec Gitlab po
     salary: "15k ₹",
     time: "7 m - current",
     workType: "Hybrid",
+    technologies: [],
   ),
 /*  Experience(
     id: 3,

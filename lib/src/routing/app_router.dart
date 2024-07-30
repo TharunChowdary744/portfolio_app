@@ -65,7 +65,7 @@ GoRouter goRouter(ProviderRef<GoRouter> ref) {
                 path: AppRoute.experiences.route,
                 name: AppRoute.experiences.name,
                 pageBuilder: (context, state) =>
-                    const NoTransitionPage(child: ExperiencesScreen()),
+                    const NoTransitionPage(child: ExperiencesScreen(experiences: [],)),
                 routes: [
             /*      GoRoute(
                       path: AppRoute.experienceId.route,
@@ -93,7 +93,7 @@ GoRouter goRouter(ProviderRef<GoRouter> ref) {
                 path: AppRoute.techs.route,
                 name: AppRoute.techs.name,
                 pageBuilder: (context, state) =>
-                    const NoTransitionPage(child: TechsScreen()),
+                    const NoTransitionPage(child: TechsScreen( skillSet: [],)),
               ),
             ],
           ),
@@ -105,7 +105,7 @@ GoRouter goRouter(ProviderRef<GoRouter> ref) {
                 path: AppRoute.projects.route,
                 name: AppRoute.projects.name,
                 pageBuilder: (context, state) =>
-                    const NoTransitionPage(child: ProjectsScreen()),
+                    NoTransitionPage(child: ProjectsScreen(projects: [], projectCategories: [],)),
                 routes: [
                   GoRoute(
                       path: AppRoute.project.route,
@@ -117,7 +117,7 @@ GoRouter goRouter(ProviderRef<GoRouter> ref) {
                           return const NotFoundScreen();
                         }
                         return ProjectScreen(
-                          projectId: int.parse(projectId),
+                          projectId: int.parse(projectId).toString(),
                         );
                       }),
                 ],

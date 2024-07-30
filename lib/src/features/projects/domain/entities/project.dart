@@ -3,15 +3,17 @@ import 'dart:ui';
 import 'package:portfolio/src/features/projects/domain/entities/project_category.dart';
 import 'package:portfolio/src/features/projects/domain/entities/project_feature.dart';
 
+import '../../../settings/domain/profile.dart';
+
 
 class Project {
-  final int id;
+  final String id;
   final String name;
   final String description;
   final String workType;
   final Color color;
   final List<ProjectCategory> categories;
-  final List<ProjectFeature> features;
+  final List<ProjectFeatures> features;
   final String? getStartedUrl;
   final String? watchDemoUrl;
   final String? githubUrl;
@@ -31,3 +33,4 @@ class Project {
     required this.assetImages,
   });
 }
+

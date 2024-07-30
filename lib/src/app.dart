@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../HomePgae.dart';
+import '../HomePage.dart';
 import 'constants/dark_theme.dart';
 import 'constants/light_theme.dart';
 

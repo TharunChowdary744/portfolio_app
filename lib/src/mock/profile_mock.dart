@@ -6,4 +6,5 @@ final profileMocked = Profile(
   phoneNumber: "+919603566744",
   city: "Kakinada",
   country: "India",
+  skillSet: [], projectCategories: [], projectFeatures: [],
 );

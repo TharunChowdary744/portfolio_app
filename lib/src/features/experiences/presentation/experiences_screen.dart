@@ -8,8 +8,10 @@ import 'package:portfolio/src/features/experiences/presentation/widget/experienc
 import 'package:text_scroll/text_scroll.dart';
 
 import '../domain/entities/experience.dart';
+
 class ExperiencesScreen extends StatefulWidget {
-  const ExperiencesScreen({super.key});
+  final List<Experience> experiences;
+  const ExperiencesScreen({super.key, required this.experiences});
 
   @override
   State<ExperiencesScreen> createState() => _ExperiencesScreenState();
@@ -17,70 +19,13 @@ class ExperiencesScreen extends StatefulWidget {
 
 class _ExperiencesScreenState extends State<ExperiencesScreen> {
   final scrollController = ScrollController();
-  List<Experience> _experiences = [];
-  bool _isLoading = true;
 
-  @override
-  void initState() {
-    super.initState();
-    fetchExperience();
-  }
 
   @override
   void dispose() {
     scrollController.dispose();
     super.dispose();
   }
-  Future<Map<String, dynamic>?> getExperienceByProfileId(String profileId) async {
-    try {
-      CollectionReference experiences = FirebaseFirestore.instance.collection('experiences');
-      QuerySnapshot querySnapshot = await experiences.where('profileId', isEqualTo: profileId).get();
-
-      if (querySnapshot.docs.isNotEmpty) {
-        List<Experience> experiences = querySnapshot.docs.map((doc) {
-          final data = doc.data() as Map<String, dynamic>;
-          return Experience(
-            id: data['experienceId'], // Assuming you want to use the document ID as the ID
-            title: data['title'],
-            description: data['description'],
-            startYear: data['startYear'],
-            endYear: data['endYear'],
-            city: data['city'],
-            country: data['country'],
-            company: data['company'],
-            salary: data['salary'],
-            time: data['time'],
-            workType: data['workType'],
-          );
-        }).toList();
-
-        setState(() {
-          _experiences = experiences;
-          _isLoading = false;
-        });
-      } else {
-        setState(() {
-          _experiences = [];
-          _isLoading = false;
-        });
-      }
-    } catch (e) {
-      print('Error fetching data: $e');
-      return null;
-    }
-  }
-  void fetchExperience() async {
-    String profileId = 'UQiyhgjnAYTtZw94iime';
-    Map<String, dynamic>? experienceData = await getExperienceByProfileId(profileId);
-
-    if (experienceData != null) {
-      print('Experience Data: $experienceData');
-    } else {
-      print('No experience data found for profileId: $profileId');
-    }
-  }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -222,34 +167,34 @@ class _ExperiencesScreenState extends State<ExperiencesScreen> {
                 delegate: SliverChildListDelegate([
                   Padding(
                     padding: const EdgeInsets.only(left: 20, right: 20, bottom: 120),
-                    child: _isLoading
+                    child: /*_isLoading
                         ? Center(child: CircularProgressIndicator())
-                        : _experiences.isEmpty
-                        ? Center(child: Text('No experiences found'))
-                        : StaggeredGrid.count(
-                      crossAxisCount: 4,
-                      mainAxisSpacing: 20,
-                      crossAxisSpacing: 20,
-                      children: [
-                        StaggeredGridTile.count(
-                          crossAxisCellCount: 2,
-                          mainAxisCellCount: 1,
-                          child: SizedBox(),
-                        ),
-                      ].expand((element) {
-                        List<StaggeredGridTile> list = [];
-                        _experiences.asMap().forEach((index, experience) {
-                          list.add(StaggeredGridTile.count(
-                            crossAxisCellCount: 2,
-                            mainAxisCellCount: 2.5,
-                            child: ExperienceCard(
-                              experience: experience,
-                            ),
-                          ));
-                        });
-                        return list;
-                      }).toList(),
-                    ),
+                        : */widget.experiences.isEmpty
+                            ? Center(child: Text('No experiences found'))
+                            : StaggeredGrid.count(
+                                crossAxisCount: 4,
+                                mainAxisSpacing: 20,
+                                crossAxisSpacing: 20,
+                                children: [
+                                  StaggeredGridTile.count(
+                                    crossAxisCellCount: 2,
+                                    mainAxisCellCount: 1,
+                                    child: SizedBox(),
+                                  ),
+                                ].expand((element) {
+                                  List<StaggeredGridTile> list = [];
+                                  widget.experiences.asMap().forEach((index, experience) {
+                                    list.add(StaggeredGridTile.count(
+                                      crossAxisCellCount: 2,
+                                      mainAxisCellCount: 2.5,
+                                      child: ExperienceCard(
+                                        experience: experience,
+                                      ),
+                                    ));
+                                  });
+                                  return list;
+                                }).toList(),
+                              ),
                   )
                 ]),
               ),
@@ -282,8 +227,7 @@ class _Background extends StatelessWidget {
     return ListenableBuilder(
       listenable: scrollController,
       builder: (context, _) {
-        final offset =
-            scrollController.hasClients ? scrollController.offset : 0;
+        final offset = scrollController.hasClients ? scrollController.offset : 0;
         double scale = 1 - (offset / maxHeight).clamp(0, 1).toDouble();
         scale = scale.clamp(0, 1);
         final height = maxHeight * scale;
@@ -292,10 +236,7 @@ class _Background extends StatelessWidget {
         // Calcul de l'opacité pour le fondu
         double opacity = 1.0;
         if (offset > fadeStart) {
-          opacity = 1 -
-              ((offset - fadeStart) / (fadeEnd - fadeStart))
-                  .clamp(0, 1)
-                  .toDouble();
+          opacity = 1 - ((offset - fadeStart) / (fadeEnd - fadeStart)).clamp(0, 1).toDouble();
         }
         print(opacity);
 
@@ -328,7 +269,7 @@ class _Background extends StatelessWidget {
                 ),
               ),
             ),
-     /*       Align(
+            /*       Align(
                 alignment: Alignment.topRight,
                 child: Container(
                   height: height > minHeight
@@ -364,6 +305,7 @@ class TextScrolled extends StatelessWidget {
   final String text;
   final TextScrollMode mode;
   final TextDirection textDirection;
+
   const TextScrolled(
     this.text, {
     super.key,
@@ -379,11 +321,7 @@ class TextScrolled extends StatelessWidget {
       fadedBorder: true,
       textDirection: textDirection,
       velocity: Velocity(pixelsPerSecond: Offset(120, 0)),
-      style: Theme.of(context).textTheme.headlineLarge!.copyWith(
-          fontWeight: FontWeight.w900,
-          fontSize: 68,
-          letterSpacing: 6,
-          height: 1.4),
+      style: Theme.of(context).textTheme.headlineLarge!.copyWith(fontWeight: FontWeight.w900, fontSize: 68, letterSpacing: 6, height: 1.4),
     );
   }
 }
@@ -417,19 +355,14 @@ class BlurShadow extends StatelessWidget {
         return RadialGradient(
           center: Alignment.topCenter,
           radius: 1,
-          colors: <Color>[
-            Theme.of(context).scaffoldBackgroundColor,
-            Colors.transparent
-          ],
+          colors: <Color>[Theme.of(context).scaffoldBackgroundColor, Colors.transparent],
           stops: [0.4, 0.8],
         ).createShader(bounds);
       },
       blendMode: BlendMode.dstOut,
       child: BackdropFilter(
         filter: ImageFilter.blur(sigmaX: 170, sigmaY: 170),
-        child: Container(
-            alignment: Alignment.center,
-            color: Theme.of(context).scaffoldBackgroundColor.withOpacity(0.8)),
+        child: Container(alignment: Alignment.center, color: Theme.of(context).scaffoldBackgroundColor.withOpacity(0.8)),
       ),
     );
   }
