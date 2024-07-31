@@ -62,167 +62,167 @@ class SettingsScreen extends StatelessWidget {
               flex: 4,
               child: Stack(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 55),
-                    child: Container(
-                      padding: const EdgeInsets.only(top: 80),
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).dividerColor,
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(20),
-                          topRight: Radius.circular(20),
-                        ),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.1),
-                            blurRadius: 10,
-                            spreadRadius: 5,
-                          ),
-                        ],
-                      ),
-                      child: Column(
-                        children: [
-                          ListTile(
-                            leading: Container(
-                                width: 46,
-                                height: 46,
-                                decoration: BoxDecoration(
-                                  color:
-                                      Theme.of(context).scaffoldBackgroundColor,
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: Center(
-                                    child: Icon(
-                                  Icons.person,
-                                  color: Theme.of(context).dividerColor,
-                                  size: 28,
-                                ))),
-                            title: Text("Personnal Informations",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .titleMedium!
-                                    .copyWith(
-                                        color: Theme.of(context)
-                                            .scaffoldBackgroundColor)),
-                            trailing: Icon(
-                              Icons.arrow_forward_ios,
-                              size: 22,
-                              color: Theme.of(context).scaffoldBackgroundColor,
-                            ),
-                            onTap: () {
-                              GoRouter.of(context)
-                                  .push("${AppRoute.settings.route}/personnal");
-                            },
-                          ),
-                          const SizedBox(
-                            height: 15,
-                          ),
-                          ListTile(
-                            leading: Container(
-                                width: 46,
-                                height: 46,
-                                decoration: BoxDecoration(
-                                  color:
-                                      Theme.of(context).scaffoldBackgroundColor,
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: Center(
-                                    child: Icon(
-                                  Icons.language,
-                                  color: Theme.of(context).dividerColor,
-                                  size: 28,
-                                ))),
-                            title: Text("Language",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .titleMedium!
-                                    .copyWith(
-                                        color: Theme.of(context)
-                                            .scaffoldBackgroundColor)),
-                            trailing: Icon(
-                              Icons.arrow_forward_ios,
-                              size: 22,
-                              color: Theme.of(context).scaffoldBackgroundColor,
-                            ),
-                            onTap: () {
-                              GoRouter.of(context)
-                                  .push("${AppRoute.settings.route}/language");
-                            },
-                          ),
-                          const SizedBox(
-                            height: 15,
-                          ),
-                          ListTile(
-                            leading: Container(
-                                width: 46,
-                                height: 46,
-                                decoration: BoxDecoration(
-                                  color:
-                                      Theme.of(context).scaffoldBackgroundColor,
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: Center(
-                                    child: Icon(
-                                  Icons.settings,
-                                  color: Theme.of(context).dividerColor,
-                                  size: 28,
-                                ))),
-                            title: Text("Settings",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .titleMedium!
-                                    .copyWith(
-                                        color: Theme.of(context)
-                                            .scaffoldBackgroundColor)),
-                            trailing: Icon(
-                              Icons.arrow_forward_ios,
-                              size: 22,
-                              color: Theme.of(context).scaffoldBackgroundColor,
-                            ),
-                            onTap: () {
-                              GoRouter.of(context)
-                                  .push("${AppRoute.settings.route}/setting");
-                            },
-                          ),
-                          const SizedBox(
-                            height: 15,
-                          ),
-                          ListTile(
-                            leading: Container(
-                                width: 46,
-                                height: 46,
-                                decoration: BoxDecoration(
-                                  color:
-                                      Theme.of(context).scaffoldBackgroundColor,
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: Center(
-                                    child: Icon(
-                                  Icons.question_answer,
-                                  color: Theme.of(context).dividerColor,
-                                  size: 28,
-                                ))),
-                            title: Text("FAQ",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .titleMedium!
-                                    .copyWith(
-                                        color: Theme.of(context)
-                                            .scaffoldBackgroundColor)),
-                            trailing: Icon(
-                              Icons.arrow_forward_ios,
-                              size: 22,
-                              color: Theme.of(context).scaffoldBackgroundColor,
-                            ),
-                            onTap: () {
-                              GoRouter.of(context)
-                                  .push("${AppRoute.settings.route}/faq");
-                            },
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
+                  // Padding(
+                  //   padding: const EdgeInsets.only(top: 55),
+                  //   child: Container(
+                  //     padding: const EdgeInsets.only(top: 80),
+                  //     decoration: BoxDecoration(
+                  //       color: Theme.of(context).dividerColor,
+                  //       borderRadius: BorderRadius.only(
+                  //         topLeft: Radius.circular(20),
+                  //         topRight: Radius.circular(20),
+                  //       ),
+                  //       boxShadow: [
+                  //         BoxShadow(
+                  //           color: Colors.black.withOpacity(0.1),
+                  //           blurRadius: 10,
+                  //           spreadRadius: 5,
+                  //         ),
+                  //       ],
+                  //     ),
+                  //     child: Column(
+                  //       children: [
+                  //         ListTile(
+                  //           leading: Container(
+                  //               width: 46,
+                  //               height: 46,
+                  //               decoration: BoxDecoration(
+                  //                 color:
+                  //                     Theme.of(context).scaffoldBackgroundColor,
+                  //                 borderRadius: BorderRadius.circular(10),
+                  //               ),
+                  //               child: Center(
+                  //                   child: Icon(
+                  //                 Icons.person,
+                  //                 color: Theme.of(context).dividerColor,
+                  //                 size: 28,
+                  //               ))),
+                  //           title: Text("Personnal Informations",
+                  //               style: Theme.of(context)
+                  //                   .textTheme
+                  //                   .titleMedium!
+                  //                   .copyWith(
+                  //                       color: Theme.of(context)
+                  //                           .scaffoldBackgroundColor)),
+                  //           trailing: Icon(
+                  //             Icons.arrow_forward_ios,
+                  //             size: 22,
+                  //             color: Theme.of(context).scaffoldBackgroundColor,
+                  //           ),
+                  //           onTap: () {
+                  //             GoRouter.of(context)
+                  //                 .push("${AppRoute.settings.route}/personnal");
+                  //           },
+                  //         ),
+                  //         const SizedBox(
+                  //           height: 15,
+                  //         ),
+                  //         ListTile(
+                  //           leading: Container(
+                  //               width: 46,
+                  //               height: 46,
+                  //               decoration: BoxDecoration(
+                  //                 color:
+                  //                     Theme.of(context).scaffoldBackgroundColor,
+                  //                 borderRadius: BorderRadius.circular(10),
+                  //               ),
+                  //               child: Center(
+                  //                   child: Icon(
+                  //                 Icons.language,
+                  //                 color: Theme.of(context).dividerColor,
+                  //                 size: 28,
+                  //               ))),
+                  //           title: Text("Language",
+                  //               style: Theme.of(context)
+                  //                   .textTheme
+                  //                   .titleMedium!
+                  //                   .copyWith(
+                  //                       color: Theme.of(context)
+                  //                           .scaffoldBackgroundColor)),
+                  //           trailing: Icon(
+                  //             Icons.arrow_forward_ios,
+                  //             size: 22,
+                  //             color: Theme.of(context).scaffoldBackgroundColor,
+                  //           ),
+                  //           onTap: () {
+                  //             GoRouter.of(context)
+                  //                 .push("${AppRoute.settings.route}/language");
+                  //           },
+                  //         ),
+                  //         const SizedBox(
+                  //           height: 15,
+                  //         ),
+                  //         ListTile(
+                  //           leading: Container(
+                  //               width: 46,
+                  //               height: 46,
+                  //               decoration: BoxDecoration(
+                  //                 color:
+                  //                     Theme.of(context).scaffoldBackgroundColor,
+                  //                 borderRadius: BorderRadius.circular(10),
+                  //               ),
+                  //               child: Center(
+                  //                   child: Icon(
+                  //                 Icons.settings,
+                  //                 color: Theme.of(context).dividerColor,
+                  //                 size: 28,
+                  //               ))),
+                  //           title: Text("Settings",
+                  //               style: Theme.of(context)
+                  //                   .textTheme
+                  //                   .titleMedium!
+                  //                   .copyWith(
+                  //                       color: Theme.of(context)
+                  //                           .scaffoldBackgroundColor)),
+                  //           trailing: Icon(
+                  //             Icons.arrow_forward_ios,
+                  //             size: 22,
+                  //             color: Theme.of(context).scaffoldBackgroundColor,
+                  //           ),
+                  //           onTap: () {
+                  //             GoRouter.of(context)
+                  //                 .push("${AppRoute.settings.route}/setting");
+                  //           },
+                  //         ),
+                  //         const SizedBox(
+                  //           height: 15,
+                  //         ),
+                  //         ListTile(
+                  //           leading: Container(
+                  //               width: 46,
+                  //               height: 46,
+                  //               decoration: BoxDecoration(
+                  //                 color:
+                  //                     Theme.of(context).scaffoldBackgroundColor,
+                  //                 borderRadius: BorderRadius.circular(10),
+                  //               ),
+                  //               child: Center(
+                  //                   child: Icon(
+                  //                 Icons.question_answer,
+                  //                 color: Theme.of(context).dividerColor,
+                  //                 size: 28,
+                  //               ))),
+                  //           title: Text("FAQ",
+                  //               style: Theme.of(context)
+                  //                   .textTheme
+                  //                   .titleMedium!
+                  //                   .copyWith(
+                  //                       color: Theme.of(context)
+                  //                           .scaffoldBackgroundColor)),
+                  //           trailing: Icon(
+                  //             Icons.arrow_forward_ios,
+                  //             size: 22,
+                  //             color: Theme.of(context).scaffoldBackgroundColor,
+                  //           ),
+                  //           onTap: () {
+                  //             GoRouter.of(context)
+                  //                 .push("${AppRoute.settings.route}/faq");
+                  //           },
+                  //         ),
+                  //       ],
+                  //     ),
+                  //   ),
+                  // ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 30),
                     child: Container(

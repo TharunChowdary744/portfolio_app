@@ -4,6 +4,7 @@ class Experience {
   final String description;
   final String startYear;
   final String endYear;
+  final String logoUrl;
   final String city;
   final String country;
   final String company;
@@ -18,6 +19,7 @@ class Experience {
     required this.description,
     required this.startYear,
     required this.endYear,
+    required this.logoUrl,
     required this.city,
     required this.country,
     required this.company,

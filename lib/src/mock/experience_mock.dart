@@ -26,7 +26,7 @@ Enfin j'ai pu mettre en place une plateforme de CI/CD Self Hosted avec Gitlab po
     salary: "15k ₹",
     time: "7 m - current",
     workType: "Hybrid",
-    technologies: [],
+    technologies: [], logoUrl: 'null',
   ),
 /*  Experience(
     id: 3,

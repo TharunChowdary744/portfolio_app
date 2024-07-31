@@ -31,7 +31,7 @@ class ExperienceScreen extends StatelessWidget {
                 child: Center(
                   child: SizedBox(
                     height: 140,
-                    child: ClipRRect(borderRadius: BorderRadius.circular(20), child: Image.asset("assets/images/windle.jpg")),
+                    child: ClipRRect(borderRadius: BorderRadius.circular(20), child: Image.network("${experience.logoUrl}")),
                   ),
                 ),
               ),

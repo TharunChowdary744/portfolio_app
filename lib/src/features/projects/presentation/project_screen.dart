@@ -20,6 +20,7 @@ class ProjectScreen extends StatefulWidget {
 class _ProjectScreenState extends State<ProjectScreen> {
   final CarouselController _carouselController = CarouselController();
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +47,7 @@ class _ProjectScreenState extends State<ProjectScreen> {
                   flex: 2,
                   child: Container(
                       // color: Color(0XFF)widget.project.color,
-                      // color: Color(int.parse(widget.project.color.toString().replaceFirst('#', '0xff'))),
+                      // color:  Color(int.parse(widget.project.color.toString().replaceFirst('#', '0xff'),radix: 16)),
                       width: double.infinity,
                       child: CarouselSlider(
                         carouselController: _carouselController,

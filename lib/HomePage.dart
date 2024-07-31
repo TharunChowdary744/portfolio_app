@@ -67,6 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
             description: data['description'],
             startYear: data['startYear'],
             endYear: data['endYear'],
+            logoUrl: data['logoUrl'],
             city: data['city'],
             country: data['country'],
             company: data['company'],
