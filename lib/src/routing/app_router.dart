@@ -107,7 +107,7 @@ GoRouter goRouter(ProviderRef<GoRouter> ref) {
                 pageBuilder: (context, state) =>
                     NoTransitionPage(child: ProjectsScreen(projects: [], projectCategories: [],)),
                 routes: [
-                  GoRoute(
+         /*         GoRoute(
                       path: AppRoute.project.route,
                       name: AppRoute.project.name,
                       builder: (context, state) {
@@ -117,9 +117,9 @@ GoRouter goRouter(ProviderRef<GoRouter> ref) {
                           return const NotFoundScreen();
                         }
                         return ProjectScreen(
-                          projectId: int.parse(projectId).toString(),
+                           project: ,
                         );
-                      }),
+                      }),*/
                 ],
               ),
             ],

@@ -6,10 +6,11 @@ import '../../../mock/project_mock.dart';
 import '../domain/entities/project.dart';
 
 class ProjectScreen extends StatefulWidget {
-  final String projectId;
+  final Project project;
+
   const ProjectScreen({
     super.key,
-    required this.projectId,
+    required this.project,
   });
 
   @override
@@ -18,14 +19,6 @@ class ProjectScreen extends StatefulWidget {
 
 class _ProjectScreenState extends State<ProjectScreen> {
   final CarouselController _carouselController = CarouselController();
-  late Project project;
-
-  @override
-  void initState() {
-    project =
-        mockedProjects.firstWhere((element) => element.id == widget.projectId);
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +45,8 @@ class _ProjectScreenState extends State<ProjectScreen> {
               Expanded(
                   flex: 2,
                   child: Container(
-                      color: project.color,
+                      // color: Color(0XFF)widget.project.color,
+                      // color: Color(int.parse(widget.project.color.toString().replaceFirst('#', '0xff'))),
                       width: double.infinity,
                       child: CarouselSlider(
                         carouselController: _carouselController,
@@ -61,7 +55,7 @@ class _ProjectScreenState extends State<ProjectScreen> {
                           viewportFraction: 1,
                           aspectRatio: 1,
                         ),
-                        items: project.assetImages.map((i) {
+                        items: widget.project.images.map((i) {
                           return Image.asset(
                             i,
                             fit: BoxFit.cover,
@@ -76,8 +70,7 @@ class _ProjectScreenState extends State<ProjectScreen> {
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20.0, vertical: 10.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
                     child: CustomScrollView(
                       slivers: [
                         SliverAppBar(
@@ -85,77 +78,48 @@ class _ProjectScreenState extends State<ProjectScreen> {
                           collapsedHeight: 120,
                           pinned: true,
                           floating: true,
-                          surfaceTintColor:
-                              Theme.of(context).scaffoldBackgroundColor,
-                          backgroundColor:
-                              Theme.of(context).scaffoldBackgroundColor,
+                          surfaceTintColor: Theme.of(context).scaffoldBackgroundColor,
+                          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
                           automaticallyImplyLeading: false,
                           flexibleSpace: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                project.name,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .headlineSmall!
-                                    .copyWith(fontWeight: FontWeight.bold),
+                                widget.project.name,
+                                style: Theme.of(context).textTheme.headlineSmall!.copyWith(fontWeight: FontWeight.bold),
                               ),
                               const SizedBox(height: 6),
                               Text(
-                                project.workType,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .titleSmall!
-                                    .copyWith(fontStyle: FontStyle.italic),
+                                widget.project.workType,
+                                style: Theme.of(context).textTheme.titleSmall!.copyWith(fontStyle: FontStyle.italic),
                               ),
                               const SizedBox(height: 10),
                               Row(
                                 children: [
                                   Container(
                                       margin: const EdgeInsets.only(right: 8),
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(30),
-                                          color:
-                                              Theme.of(context).dividerColor),
+                                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: Theme.of(context).dividerColor),
                                       child: Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 30.0, vertical: 11.0),
+                                          padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 11.0),
                                           child: Text("Get Started",
                                               style: Theme.of(context)
                                                   .textTheme
                                                   .titleMedium!
-                                                  .copyWith(
-                                                      color: Theme.of(context)
-                                                          .scaffoldBackgroundColor)))),
+                                                  .copyWith(color: Theme.of(context).scaffoldBackgroundColor)))),
                                   Container(
                                       margin: const EdgeInsets.only(left: 8),
                                       decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(30),
-                                          border: Border.all(
-                                              width: 1.5,
-                                              color: Theme.of(context)
-                                                  .dividerColor)),
+                                          borderRadius: BorderRadius.circular(30),
+                                          border: Border.all(width: 1.5, color: Theme.of(context).dividerColor)),
                                       child: Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 15.0, vertical: 10.0),
+                                          padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
                                           child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
+                                            mainAxisAlignment: MainAxisAlignment.center,
                                             children: [
-                                              Icon(Icons.play_arrow_rounded,
-                                                  color: Theme.of(context)
-                                                      .dividerColor),
+                                              Icon(Icons.play_arrow_rounded, color: Theme.of(context).dividerColor),
                                               const SizedBox(width: 4),
                                               Text("Watch a Demo",
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .titleMedium!
-                                                      .copyWith(
-                                                          color: Theme.of(
-                                                                  context)
-                                                              .dividerColor)),
+                                                  style: Theme.of(context).textTheme.titleMedium!.copyWith(color: Theme.of(context).dividerColor)),
                                             ],
                                           ))),
                                 ],
@@ -166,17 +130,13 @@ class _ProjectScreenState extends State<ProjectScreen> {
                         SliverList(
                             delegate: SliverChildListDelegate([
                           const SizedBox(height: 20),
-                          Text('Features',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleMedium!
-                                  .copyWith(fontWeight: FontWeight.bold)),
+                          Text('Features', style: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.bold)),
                           const SizedBox(height: 8),
                           SizedBox(
                             height: 94,
                             child: ListView.builder(
                               shrinkWrap: true,
-                              itemCount: project.features.length,
+                              itemCount: widget.project.features.length,
                               scrollDirection: Axis.horizontal,
                               itemBuilder: (context, index) {
                                 return Container(
@@ -184,26 +144,16 @@ class _ProjectScreenState extends State<ProjectScreen> {
                                   margin: const EdgeInsets.only(right: 8),
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10),
-                                    border: Border.all(
-                                        width: 1.5,
-                                        color: Theme.of(context)
-                                            .dividerColor
-                                            .withOpacity(0.2)),
+                                    border: Border.all(width: 1.5, color: Theme.of(context).dividerColor.withOpacity(0.2)),
                                   ),
                                   child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 10.0, vertical: 10.0),
+                                    padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
                                     child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       children: [
                                         Icon(Icons.child_care),
-                                        Text(project.features[index].name,
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .bodyMedium)
+                                        Text(widget.project.features[index].name, style: Theme.of(context).textTheme.bodyMedium)
                                       ],
                                     ),
                                   ),
@@ -212,14 +162,10 @@ class _ProjectScreenState extends State<ProjectScreen> {
                             ),
                           ),
                           const SizedBox(height: 20),
-                          Text('About',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleMedium!
-                                  .copyWith(fontWeight: FontWeight.bold)),
+                          Text('About', style: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.bold)),
                           const SizedBox(height: 8),
                           Text(
-                            project.description,
+                            widget.project.description,
                             style: Theme.of(context).textTheme.bodyMedium,
                             textAlign: TextAlign.justify,
                           ),

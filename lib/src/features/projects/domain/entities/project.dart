@@ -17,7 +17,7 @@ class Project {
   final String? getStartedUrl;
   final String? watchDemoUrl;
   final String? githubUrl;
-  final List<String> assetImages;
+  final List<String> images;
 
   Project({
     required this.id,
@@ -30,7 +30,7 @@ class Project {
     this.getStartedUrl,
     this.watchDemoUrl,
     this.githubUrl,
-    required this.assetImages,
+    required this.images,
   });
 }
 

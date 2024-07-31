@@ -148,14 +148,14 @@ class _MyHomePageState extends State<MyHomePage> {
           }
 
           return Project(
-            id: doc.id,
+            id: data['projectId'],
             description: data['description'],
             workType: data['workType'],
             name: data['name'],
             color: color,
             categories: categories,
             features: features,
-            assetImages: List<String>.from(data['images'] ?? []),
+            images: List<String>.from(data['images'] ?? []),
           );
         }).toList();
 

@@ -14,7 +14,7 @@ final mockedProjectCategories = [
 
 final mockedProjects = [
   Project(
-      id: '1',
+      id: 'Y0fic9vwt3yw2X7f9cYq',
       name: "Windle",
       description:
           "Application mobile destiné au monde du chauffage. Windle est un assistant de dimensionnement, qui propose une interface simple et intuitive pour aider les professionnels du chauffage à choisir les pompes à chaleurs les plus adaptés aux besoins.",
@@ -35,7 +35,7 @@ final mockedProjects = [
       ],
       githubUrl: "https://test.com",
       watchDemoUrl: "https://test.com",
-      assetImages: [
+      images: [
         "assets/projects/images/windle_1.png",
         "assets/projects/images/windle_2.png",
         "assets/projects/images/windle_3.png",
@@ -62,7 +62,7 @@ final mockedProjects = [
     ],
     githubUrl: "https://test.com",
     watchDemoUrl: "https://test.com",
-    assetImages: [
+    images: [
       "assets/projects/images/weather_journey_1.png",
     ],
   ),
@@ -84,7 +84,7 @@ final mockedProjects = [
     ],
     githubUrl: "https://test.com",
     watchDemoUrl: "https://test.com",
-    assetImages: [
+    images: [
       "assets/projects/images/vsion_habit_1.png",
     ],
   ),
@@ -105,7 +105,7 @@ final mockedProjects = [
     ],
     githubUrl: "https://test.com",
     watchDemoUrl: "https://test.com",
-    assetImages: [
+    images: [
       "assets/projects/images/shophouse_1.png",
     ],
   ),

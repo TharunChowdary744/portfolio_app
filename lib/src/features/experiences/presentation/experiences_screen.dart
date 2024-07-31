@@ -167,10 +167,8 @@ class _ExperiencesScreenState extends State<ExperiencesScreen> {
                 delegate: SliverChildListDelegate([
                   Padding(
                     padding: const EdgeInsets.only(left: 20, right: 20, bottom: 120),
-                    child: /*_isLoading
-                        ? Center(child: CircularProgressIndicator())
-                        : */widget.experiences.isEmpty
-                            ? Center(child: Text('No experiences found'))
+                    child: widget.experiences.isEmpty
+                            ? Center(child: Text('No experience found'))
                             : StaggeredGrid.count(
                                 crossAxisCount: 4,
                                 mainAxisSpacing: 20,
